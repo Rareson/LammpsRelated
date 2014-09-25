@@ -11,6 +11,7 @@ required in my Computational Materials course.
 
 Usage:
 (Replace "~/Documents/code" by the path where you put the repository.)
+
 	cd ~/Documents/code
 	chmod +x ./installClass.sh
 	./installClass.sh
