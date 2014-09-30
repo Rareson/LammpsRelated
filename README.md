@@ -27,7 +27,11 @@ You can test it with:
 
 installLAMMPS.sh
 ---------------
+This script is unfinished.
 
+This script is intended for full installation of LAMPPS with all its functionalities anabled.
+
+But some problems are still unresolved. Sorry for any confusion or inconvenience.
 
 Acknowledgements
 ----------------

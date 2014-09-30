@@ -1,0 +1,36 @@
+Tersoff potential is explained in:
+http://lammps.sandia.gov/doc/pair_tersoff.html
+
+Reference about Tersoff:
+http://journals.aps.org/prb/abstract/10.1103/PhysRevB.37.6991
+
+http://journals.aps.org/prb/abstract/10.1103/PhysRevB.39.5566
+
+/home/domicor/Documents/code/compiled/examples_for_lmps/ex01_lattice_const/lmp_serial_mine
+
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+
+I added:
+# fix the temperature
+fix 1 all nve
+
+then the result seems to be fine.
+
+
+useful info: data site to get crystal data:
+http://lammps.sandia.gov/prepost.html#cams
+
+http://www.orsi.sems.qmul.ac.uk/downloads.html
+http://cams.mse.ufl.edu/
+
+Pre/Post Processing Tools for use with LAMMPS 
+http://lammps.sandia.gov/prepost.html
+
+This is a good source for pre/post processing tools.
+
+
+Refer to abs-guide chapter 18. Regular Expressions. Page 435.
+
+cd /home/domicor/Documents/code/compiled/examples_for_lmps/ex01_lattice_const
+grep ^@ log.lammps
+
