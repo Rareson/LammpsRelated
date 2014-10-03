@@ -9,6 +9,10 @@ function calLatticeConstant(N,step,inFileName)
 % Example:
 %   calLatticeConstant(3,0.01,'lattice_02_processed.data')
 %   Here, 'lattice_02_processed.data' is a file stores "lat_const cohesive_energy"
+% The result is:
+% lat_const = 3.5659
+% coh_energy = -7.3682
+% A snapshot of the figure is named lattice_2_processed.jpg.
 % Originally Created by Xianbao Duan
 % Email: xianbao.d@gmail.com
 % Source: http://www.52souji.net/matlab-calculate-lattice-constant/

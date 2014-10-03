@@ -57,6 +57,11 @@ calLatticeConstant(3,0.01,'lattice_02_processed.data')
 # try centering and scaling as described in HELP POLYFIT. 
 
 ############################### example 2 ###############################
+cd /home/domicor/Documents/code/compiled/examples_for_lmps/ex02_elastic
+./lmp_serial_mine < ex02.input
+python ex02_process_data.py '/home/domicor/Documents/code/compiled/examples_for_lmps/ex02_elastic/log.lammps'
+
+
 
 ############################### example 5 ########################
 # dump 2 inner cfg 10 dump.snap.*.cfg id type xs ys zs
@@ -96,4 +101,6 @@ export XLIB_SKIP_ARGB_VISUALS=1
 
 # and reopen the terminal. Successfully resolved.
 #############################################################################
+
+
 
