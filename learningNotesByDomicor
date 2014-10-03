@@ -102,5 +102,12 @@ export XLIB_SKIP_ARGB_VISUALS=1
 # and reopen the terminal. Successfully resolved.
 #############################################################################
 
+Building a gui to wrap up all the installation and test.
 
+Ref: http://thinkingtkinter.sourceforge.net/
+http://www.ferg.org/thinking_in_tkinter/all_programs.html
+http://www.cyberciti.biz/faq/python-execute-unix-linux-command-examples/
 
+cd /home/domicor/LammpsRelated/GUI
+python tt010.py
+python tt020.py
