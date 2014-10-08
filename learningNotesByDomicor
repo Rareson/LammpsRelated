@@ -61,7 +61,10 @@ cd /home/domicor/Documents/code/compiled/examples_for_lmps/ex02_elastic
 ./lmp_serial_mine < ex02.input
 python ex02_process_data.py '/home/domicor/Documents/code/compiled/examples_for_lmps/ex02_elastic/log.lammps'
 
+# for Scipy and Numpy and packages related:
+sudo apt-get install python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose
 
+python fitting.py /home/domicor/Documents/code/compiled/examples_for_lmps/ex02_elastic/log.lammps.output
 
 ############################### example 5 ########################
 # dump 2 inner cfg 10 dump.snap.*.cfg id type xs ys zs
