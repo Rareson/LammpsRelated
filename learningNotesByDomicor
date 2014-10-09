@@ -114,3 +114,19 @@ http://www.cyberciti.biz/faq/python-execute-unix-linux-command-examples/
 cd /home/domicor/LammpsRelated/GUI
 python tt010.py
 python tt020.py
+
+#################
+for GUI:
+PyQtGraph:
+
+git remote add pyqtgraph-core https://github.com/pyqtgraph/pyqtgraph-core.git
+git fetch pyqtgraph-core
+git merge -s ours --no-commit pyqtgraph-core/core
+mkdir pyqtgraph
+git read-tree -u --prefix=pyqtgraph/ pyqtgraph-core/core
+git commit -m "Added pyqtgraph to project repository"
+
+git remote add -f pyqtgraph-core https://github.com/pyqtgraph/pyqtgraph-core.git  
+git subtree add --prefix=pyqtgraph-core pyqtgraph-core master --squash
+git fetch pyqtgraph-core master  
+git subtree pull --prefix=pyqtgraph-core pyqtgraph-core --squash
