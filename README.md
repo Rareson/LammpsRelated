@@ -9,10 +9,11 @@ try it with the command with a termial under the path where you put the reposito
 
 	python gui.py
 
+Currently only the button "Compile" under "Compile" tab works (partially).
+
 With a little knowledge of Python and Bash, reading the source code of gui.py,
 you can easily have a good idea of how I implemented these processes,
-such as how these packages are installed, how to test these examples. So I'll
-write no README files under every example due to my lacking of time.
+such as how these packages are installed, how to test these examples.
 
 Repository structure
 =====================

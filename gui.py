@@ -8,7 +8,8 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
-import subprocess
+from gui.LrBase.main import *
+
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -110,7 +111,7 @@ class Ui_MainWindow(object):
         QtCore.QObject.connect(self.comboBox, QtCore.SIGNAL(_fromUtf8("currentIndexChanged(int)")), self.textBrowser.reload)
         QtCore.QObject.connect(self.comboBox, QtCore.SIGNAL(_fromUtf8("currentIndexChanged(int)")), self.textBrowser_2.reload)
         QtCore.QObject.connect(self.pushButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.statusbar.show)
-        QtCore.QObject.connect(self.pushButton_2, QtCore.SIGNAL(_fromUtf8("clicked()")), self.textBrowser_2.reload)
+        QtCore.QObject.connect(self.pushButton_2, QtCore.SIGNAL(_fromUtf8("clicked()")), compileLr.compileMEAM_REAX)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -128,21 +129,13 @@ class Ui_MainWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), _translate("MainWindow", "Compile", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_5), _translate("MainWindow", "Preferences", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), _translate("MainWindow", "About", None))
-        
-    def installMin():
-        print('Install LAMMPS with package MEAM and REAX, please wait...')
-        subprocess.call(["chmod","+x","./installClass.sh"])
-        subprocess.call(["./installClass.sh"], shell=True)
 
-import sys
-from PyQt4.QtGui import *  
-from PyQt4.QtCore import *  
+
 if __name__ == "__main__":
-    
+    #mainLr.main()
     app = QApplication(sys.argv)
     window = QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(window)
-
     window.show()
     sys.exit(app.exec_())
