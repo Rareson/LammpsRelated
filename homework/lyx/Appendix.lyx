@@ -1,0 +1,2149 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass scrbook
+\begin_preamble
+% increases link area for cross-references and autoname them
+% if you change the document language to e.g. French
+% you must change "extrasenglish" to "extrasfrench"
+\AtBeginDocument{%
+ \renewcommand{\ref}[1]{\mbox{\autoref{#1}}}
+}
+\def\refnamechanges{%
+ \renewcommand*{\equationautorefname}[1]{}
+ \renewcommand{\sectionautorefname}{sec.\negthinspace}
+ \renewcommand{\subsectionautorefname}{sec.\negthinspace}
+ \renewcommand{\subsubsectionautorefname}{sec.\negthinspace}
+ \renewcommand{\figureautorefname}{Fig.\negthinspace}
+ \renewcommand{\tableautorefname}{Tab.\negthinspace}
+}
+\@ifpackageloaded{babel}{\addto\extrasenglish{\refnamechanges}}{\refnamechanges}
+
+% in case somebody want to have the label "Equation"
+%\renewcommand{\eqref}[1]{Equation~(\negthinspace\autoref{#1})}
+
+% that links to image floats jumps to the beginning
+% of the float and not to its caption
+\usepackage[figure]{hypcap}
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \frontmatter
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \mainmatter }
+
+% makes caption labels bold
+% for more info about these settings, see
+% http://mirrors.ctan.org/macros/latex/contrib/koma-script/doc/scrguien.pdf
+\setkomafont{captionlabel}{\bfseries}
+\setcapindent{1em}
+
+% enables calculations
+\usepackage{calc}
+
+% fancy page header/footer settings
+% for more information see section 9 of
+% ftp://www.ctan.org/pub/tex-archive/macros/latex2e/contrib/fancyhdr/fancyhdr.pdf
+\renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+
+% increases the bottom float placement fraction
+\renewcommand{\bottomfraction}{0.5}
+
+% avoids that floats are placed above its sections
+\let\mySection\section\renewcommand{\section}{\suppressfloats[t]\mySection}
+\end_preamble
+\options intoc,bibliography=totoc,index=totoc,BCOR10mm,captions=tableheading,titlepage,fleqn
+\use_default_options true
+\master thesis.lyx
+\begin_modules
+customHeadersFooters
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman lmodern
+\font_sans lmss
+\font_typewriter lmtt
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Your title"
+\pdf_author "Your name"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry false
+\use_amsmath 2
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\branch NoChildDocument
+\selected 0
+\filename_suffix 0
+\color #ff0000
+\end_branch
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 2
+\paragraph_separation skip
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Left Header
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+chaptername
+\end_layout
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+thechapter
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+rightmark
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Enable page headers and add the chapter to the header line.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Right Header
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+leftmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Left Footer
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+thepage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Center Footer
+
+\end_layout
+
+\begin_layout Right Footer
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+thepage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Appendix
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Appendix"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+LAMMPS script 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:LAMMPS-script"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Equilibrium Lattice Constant
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Equilibrium-Lattice-Constant"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The LAMMPS script to generate raw data for Equilibrium Lattice Constant.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "numbers=left"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+homework.input
+\begin_inset CommandInset label
+LatexCommand label
+name "lis:homework.input"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+# Homework solution by Domicor (g1114128525@gmail.com)
+\end_layout
+
+\begin_layout Plain Layout
+
+# Settings 
+\end_layout
+
+\begin_layout Plain Layout
+
+units	 	metal 
+\end_layout
+
+\begin_layout Plain Layout
+
+boundary	p p p 
+\end_layout
+
+\begin_layout Plain Layout
+
+atom_style	atomic
+\end_layout
+
+\begin_layout Plain Layout
+
+# Variables 
+\end_layout
+
+\begin_layout Plain Layout
+
+variable	i loop 20 
+\end_layout
+
+\begin_layout Plain Layout
+
+variable	x equal 3.5+0.01*$i # the lattice constant to test
+\end_layout
+
+\begin_layout Plain Layout
+
+# Build the model 
+\end_layout
+
+\begin_layout Plain Layout
+
+lattice		diamond $x 
+\end_layout
+
+\begin_layout Plain Layout
+
+region		box block 0 10 0 10 0 10 
+\end_layout
+
+\begin_layout Plain Layout
+
+create_box	1 box 
+\end_layout
+
+\begin_layout Plain Layout
+
+create_atoms	1 box
+\end_layout
+
+\begin_layout Plain Layout
+
+# Specify the potential 
+\end_layout
+
+\begin_layout Plain Layout
+
+pair_style	tersoff 
+\end_layout
+
+\begin_layout Plain Layout
+
+pair_coeff	* * SiC.tersoff C 
+\end_layout
+
+\begin_layout Plain Layout
+
+mass		1 12
+\end_layout
+
+\begin_layout Plain Layout
+
+variable	n equal count(all) 
+\end_layout
+
+\begin_layout Plain Layout
+
+variable	P equal pe/$n
+\end_layout
+
+\begin_layout Plain Layout
+
+timestep	0.005 
+\end_layout
+
+\begin_layout Plain Layout
+
+thermo		10
+\end_layout
+
+\begin_layout Plain Layout
+
+# minimize the total energy 
+\end_layout
+
+\begin_layout Plain Layout
+
+min_style	cg 
+\end_layout
+
+\begin_layout Plain Layout
+
+minimize	1.0e-12 1.0e-12 1000 1000
+\end_layout
+
+\begin_layout Plain Layout
+
+print		"@ $x $P"
+\end_layout
+
+\begin_layout Plain Layout
+
+# loop 
+\end_layout
+
+\begin_layout Plain Layout
+
+clear 
+\end_layout
+
+\begin_layout Plain Layout
+
+next		i 
+\end_layout
+
+\begin_layout Plain Layout
+
+jump		homework.input
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Young's Modulus
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Young's-Modulus"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To generate 
+\begin_inset Quotes eld
+\end_inset
+
+cohesive energy-
+\begin_inset Formula $\epsilon$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ data for later usage.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "numbers=left"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+homework_Young.input
+\begin_inset CommandInset label
+LatexCommand label
+name "lis:homework_Young.input"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Homework solution by Domicor (g1114128525@gmail.com)
+\end_layout
+
+\begin_layout Plain Layout
+
+# Settings 
+\end_layout
+
+\begin_layout Plain Layout
+
+units	 	metal 
+\end_layout
+
+\begin_layout Plain Layout
+
+boundary	p p p 
+\end_layout
+
+\begin_layout Plain Layout
+
+atom_style	atomic
+\end_layout
+
+\begin_layout Plain Layout
+
+# Build the model 
+\end_layout
+
+\begin_layout Plain Layout
+
+lattice		diamond 3.567 # according to the table 
+\end_layout
+
+\begin_layout Plain Layout
+
+region		box block 0 20 0 20 0 20 
+\end_layout
+
+\begin_layout Plain Layout
+
+create_box	1 box 
+\end_layout
+
+\begin_layout Plain Layout
+
+create_atoms	1 box
+\end_layout
+
+\begin_layout Plain Layout
+
+# Specify the potential 
+\end_layout
+
+\begin_layout Plain Layout
+
+pair_style	tersoff 
+\end_layout
+
+\begin_layout Plain Layout
+
+pair_coeff	* * SiC.tersoff C 
+\end_layout
+
+\begin_layout Plain Layout
+
+mass		1 12
+\end_layout
+
+\begin_layout Plain Layout
+
+# set the format 
+\end_layout
+
+\begin_layout Plain Layout
+
+thermo_style 	custom step lz vol 
+\end_layout
+
+\begin_layout Plain Layout
+
+thermo		100
+\end_layout
+
+\begin_layout Plain Layout
+
+# minimize the total energy 
+\end_layout
+
+\begin_layout Plain Layout
+
+min_style	cg
+\end_layout
+
+\begin_layout Plain Layout
+
+label		begin 
+\end_layout
+
+\begin_layout Plain Layout
+
+variable	t loop 21 
+\end_layout
+
+\begin_layout Plain Layout
+
+fix		1 all deform 1 z delta 0.0 216.9E-3 units box 
+\end_layout
+
+\begin_layout Plain Layout
+
+minimize	1.0e-6 1.0e-6 1000 10000
+\end_layout
+
+\begin_layout Plain Layout
+
+run 		1 post no
+\end_layout
+
+\begin_layout Plain Layout
+
+unfix		1
+\end_layout
+
+\begin_layout Plain Layout
+
+# loop
+\end_layout
+
+\begin_layout Plain Layout
+
+next		t 
+\end_layout
+
+\begin_layout Plain Layout
+
+jump		homework_Young.input begin
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Data Processing Scripts
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Data-Processing-Scripts"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Matlab script for calculating the minimum point
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Matlab-script-for"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Fit to the 
+\begin_inset Quotes eld
+\end_inset
+
+cohesive energy-
+\begin_inset Formula $\epsilon$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ data generated by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lis:homework.input"
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "lis:homework.input"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "breaklines=true,language=Matlab,numbers=left"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+calLatticeConstant.m
+\begin_inset CommandInset label
+LatexCommand label
+name "lis:calLatticeConstant.m"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+function calLatticeConstant(N,step,inFileName) 
+\end_layout
+
+\begin_layout Plain Layout
+
+% calcuate the lattice constant according to "lat_const cohesive_energy"
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+% Input: 
+\end_layout
+
+\begin_layout Plain Layout
+
+%   N: order of the polynomial fitting.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+%   step: the fitting interval, if too small, the figure will be odd while
+ the 
+\end_layout
+
+\begin_layout Plain Layout
+
+%         numeric result may be correct.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+%   inFileName: name of the file storing "lat_const cohesive_energy"
+\end_layout
+
+\begin_layout Plain Layout
+
+% Example: 
+\end_layout
+
+\begin_layout Plain Layout
+
+%   calLatticeConstant(3,0.01,'lattice_02_processed.data') 
+\end_layout
+
+\begin_layout Plain Layout
+
+%   Here, 'lattice_02_processed.data' is a file stores "lat_const cohesive_energy
+" 
+\end_layout
+
+\begin_layout Plain Layout
+
+% The result is: 
+\end_layout
+
+\begin_layout Plain Layout
+
+% lat_const = 3.5659 
+\end_layout
+
+\begin_layout Plain Layout
+
+% coh_energy = -7.3682 
+\end_layout
+
+\begin_layout Plain Layout
+
+% A snapshot of the figure is named lattice_2_processed.jpg.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+% Originally Created by Xianbao Duan 
+\end_layout
+
+\begin_layout Plain Layout
+
+% Email: xianbao.d@gmail.com 
+\end_layout
+
+\begin_layout Plain Layout
+
+% Source: http://www.52souji.net/matlab-calculate-lattice-constant/
+\end_layout
+
+\begin_layout Plain Layout
+
+% Improved by Domicor (g1114128525@gmail.com) in Nov.
+ 1, 2014.
+   
+\end_layout
+
+\begin_layout Plain Layout
+
+% read in data from the file 
+\end_layout
+
+\begin_layout Plain Layout
+
+data = load(inFileName,'-ascii'); 
+\end_layout
+
+\begin_layout Plain Layout
+
+x = data(:,1); 
+\end_layout
+
+\begin_layout Plain Layout
+
+y = data(:,2);   
+\end_layout
+
+\begin_layout Plain Layout
+
+Ecoh = polyfit(x,y,N);      
+\end_layout
+
+\begin_layout Plain Layout
+
+% polynomial fitting 
+\end_layout
+
+\begin_layout Plain Layout
+
+dEcoh = polyder(Ecoh);      % derivation of the polynomial equation 
+\end_layout
+
+\begin_layout Plain Layout
+
+zero_points = roots(dEcoh);     % solve the zero points   
+\end_layout
+
+\begin_layout Plain Layout
+
+% calculate the lattice constant and coresponding cohesive energy 
+\end_layout
+
+\begin_layout Plain Layout
+
+for i = 1: length(zero_points)
+\end_layout
+
+\begin_layout Plain Layout
+
+    if isreal(zero_points(i))
+\end_layout
+
+\begin_layout Plain Layout
+
+        if zero_points(i) > x(1)
+\end_layout
+
+\begin_layout Plain Layout
+
+            if zero_points(i) < x(end)
+\end_layout
+
+\begin_layout Plain Layout
+
+                lat_const = zero_points(i)
+\end_layout
+
+\begin_layout Plain Layout
+
+                coh_energy = spline(x,y,lat_const)
+\end_layout
+
+\begin_layout Plain Layout
+
+            end
+\end_layout
+
+\begin_layout Plain Layout
+
+        end
+\end_layout
+
+\begin_layout Plain Layout
+
+    end
+\end_layout
+
+\begin_layout Plain Layout
+
+end
+\end_layout
+
+\begin_layout Plain Layout
+
+% plot the curve 
+\end_layout
+
+\begin_layout Plain Layout
+
+xx = x(1):step:x(end); 
+\end_layout
+
+\begin_layout Plain Layout
+
+yy = polyval(Ecoh,xx); 
+\end_layout
+
+\begin_layout Plain Layout
+
+figure; 
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(x,y,'o',xx,yy); 
+\end_layout
+
+\begin_layout Plain Layout
+
+xlabel('lattice constant / A'); 
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('cohesive energy / eV'); 
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('Original points','Fitted curve');
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Fit to the data of Young's modulus
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Fit-to-the"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The raw data is provided by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lis:homework_Young.input"
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "lis:homework_Young.input"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "breaklines=true,language=Python,numbers=left"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+fittingPoly.py
+\begin_inset CommandInset label
+LatexCommand label
+name "lis:fittingPoly.py"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Curve fitting with polyfit 
+\end_layout
+
+\begin_layout Plain Layout
+
+# to use this script, type: 
+\end_layout
+
+\begin_layout Plain Layout
+
+# python fittingPoly.py ./log.lammps.output
+\end_layout
+
+\begin_layout Plain Layout
+
+from numpy import * 
+\end_layout
+
+\begin_layout Plain Layout
+
+import pylab as pl 
+\end_layout
+
+\begin_layout Plain Layout
+
+import sys 
+\end_layout
+
+\begin_layout Plain Layout
+
+import matplotlib.pyplot as plt 
+\end_layout
+
+\begin_layout Plain Layout
+
+import numpy as np 
+\end_layout
+
+\begin_layout Plain Layout
+
+from matplotlib.ticker import MultipleLocator, FormatStrFormatter 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+filepath = sys.argv[1] 
+\end_layout
+
+\begin_layout Plain Layout
+
+myfile = open(filepath) 
+\end_layout
+
+\begin_layout Plain Layout
+
+xRange = arange(0, 0.063, 0.003) 
+\end_layout
+
+\begin_layout Plain Layout
+
+xData = arange(0, 0.063, 0.003) 
+\end_layout
+
+\begin_layout Plain Layout
+
+yData = xData 
+\end_layout
+
+\begin_layout Plain Layout
+
+p0 = [197270, 100, 100] 
+\end_layout
+
+\begin_layout Plain Layout
+
+i=0; 
+\end_layout
+
+\begin_layout Plain Layout
+
+for line in myfile.readlines():
+\end_layout
+
+\begin_layout Plain Layout
+
+    data = line.split()
+\end_layout
+
+\begin_layout Plain Layout
+
+    #print(data)
+\end_layout
+
+\begin_layout Plain Layout
+
+    yData[i] = data[0]
+\end_layout
+
+\begin_layout Plain Layout
+
+    #print(yData[i])
+\end_layout
+
+\begin_layout Plain Layout
+
+    i = i+1
+\end_layout
+
+\begin_layout Plain Layout
+
+         
+\end_layout
+
+\begin_layout Plain Layout
+
+plsq = np.polyfit(xRange,yData,5) 
+\end_layout
+
+\begin_layout Plain Layout
+
+#plsq = P.polyfit(xData,yData,2) 
+\end_layout
+
+\begin_layout Plain Layout
+
+#plsq = leastsq(y = a * x**2 + b * x + c, p0,args=(yData, xData)) 
+\end_layout
+
+\begin_layout Plain Layout
+
+print(plsq) 
+\end_layout
+
+\begin_layout Plain Layout
+
+print 'the result C11 is', plsq[len(plsq)-3]*2*1000/(363077*6.2415), 'GPa'
+\end_layout
+
+\begin_layout Plain Layout
+
+fittingFunction = np.poly1d(plsq) 
+\end_layout
+
+\begin_layout Plain Layout
+
+yFitting = fittingFunction(xRange) 
+\end_layout
+
+\begin_layout Plain Layout
+
+#yFitting = P.polyval(xData, plsq) 
+\end_layout
+
+\begin_layout Plain Layout
+
+#print(xData) 
+\end_layout
+
+\begin_layout Plain Layout
+
+#print(xRange) 
+\end_layout
+
+\begin_layout Plain Layout
+
+#print(yFitting)
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.plot(xRange, yFitting, xRange, yData,'o') 
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.plot(xRange, yFitting) 
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.title('Polynomial fitting with order 5 to elastic data') 
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.legend(['Fitting Curve', 'Raw Data'],'upper left') 
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.xlabel(r'$
+\backslash
+epsilon$') 
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.ylabel('Total Engery/eV') 
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.xlim(-0.003,0.063) 
+\end_layout
+
+\begin_layout Plain Layout
+
+#plt.ylim(-113350,-112600) 
+\end_layout
+
+\begin_layout Plain Layout
+
+#plt.gca().set_yticks(arange(-113350,-112600, 100))
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.gca().xaxis.set_minor_locator(MultipleLocator(0.003))
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.gca().xaxis.set_major_locator(MultipleLocator(0.012))
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.gca().yaxis.set_major_locator(MultipleLocator(400))
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.gca().yaxis.set_major_formatter(FormatStrFormatter('%d'))
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.gca().yaxis.set_minor_locator(MultipleLocator(100))
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.gca().xaxis.grid(True,which='minor') 
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.show() 
+\end_layout
+
+\begin_layout Plain Layout
+
+#plt.savefig('fitting.jpg',dpi=300)
+\end_layout
+
+\begin_layout Plain Layout
+
+#plt.clf()
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Extract data
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Fit-to-the-1"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Extract data in the log file generated by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lis:homework_Young.input"
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "lis:homework_Young.input"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "breaklines=true,language=Python,numbers=left"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+ex02_process_data.py
+\begin_inset CommandInset label
+LatexCommand label
+name "lis:ex02_process_data.py"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+import sys
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+def ex02_process_data(path):
+\end_layout
+
+\begin_layout Plain Layout
+
+    """This is for extracting data from the log.lammps
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    Originally found in http://www.cnblogs.com/bacazy/archive/2013/09/28/3344687.ht
+ml
+\end_layout
+
+\begin_layout Plain Layout
+
+    Modified by Domicor (g1114128525@gmail.com) in Nov.
+ 3, 2014."""
+\end_layout
+
+\begin_layout Plain Layout
+
+    b = 2
+\end_layout
+
+\begin_layout Plain Layout
+
+    f = open(path);
+\end_layout
+
+\begin_layout Plain Layout
+
+    fw = open(path + '.output', 'w')
+\end_layout
+
+\begin_layout Plain Layout
+
+    for line in f.readlines():
+\end_layout
+
+\begin_layout Plain Layout
+
+        b = b+1
+\end_layout
+
+\begin_layout Plain Layout
+
+        if 'Energy initial' in str(line):
+\end_layout
+
+\begin_layout Plain Layout
+
+            b = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+        if b == 1:
+\end_layout
+
+\begin_layout Plain Layout
+
+            print(line)
+\end_layout
+
+\begin_layout Plain Layout
+
+            fw.write(line)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+ex02_process_data(sys.argv[1])
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Experiment with the order
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Experiment-with-the"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Based on the observation in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lis:fittingPoly.py"
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "lis:fittingPoly.py"
+
+\end_inset
+
+, with some modification, experiment with the order to see the influence
+ of it.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "breaklines=true,language=Python,numbers=left"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+fittingPolyDegree.py
+\begin_inset CommandInset label
+LatexCommand label
+name "lis:fittingPolyDegree.py"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# To verify the degree: 
+\end_layout
+
+\begin_layout Plain Layout
+
+from numpy import * 
+\end_layout
+
+\begin_layout Plain Layout
+
+import pylab as pl 
+\end_layout
+
+\begin_layout Plain Layout
+
+import sys 
+\end_layout
+
+\begin_layout Plain Layout
+
+import matplotlib.pyplot as plt 
+\end_layout
+
+\begin_layout Plain Layout
+
+import numpy as np 
+\end_layout
+
+\begin_layout Plain Layout
+
+from matplotlib.ticker import MultipleLocator, FormatStrFormatter
+\end_layout
+
+\begin_layout Plain Layout
+
+filepath = sys.argv[1]  
+\end_layout
+
+\begin_layout Plain Layout
+
+myfile = open(filepath) 
+\end_layout
+
+\begin_layout Plain Layout
+
+i=0; 
+\end_layout
+
+\begin_layout Plain Layout
+
+xRange = arange(0, 0.063, 0.003) 
+\end_layout
+
+\begin_layout Plain Layout
+
+xData = arange(0, 0.063, 0.003) 
+\end_layout
+
+\begin_layout Plain Layout
+
+yData = xData 
+\end_layout
+
+\begin_layout Plain Layout
+
+orderTest = [2,3,4,5,6,7,8,9,10,11,12] 
+\end_layout
+
+\begin_layout Plain Layout
+
+C11 = [] 
+\end_layout
+
+\begin_layout Plain Layout
+
+for line in myfile.readlines():
+\end_layout
+
+\begin_layout Plain Layout
+
+    data = line.split()
+\end_layout
+
+\begin_layout Plain Layout
+
+    yData[i] = data[0]
+\end_layout
+
+\begin_layout Plain Layout
+
+    i = i+1
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+i=0
+\end_layout
+
+\begin_layout Plain Layout
+
+for orderItem in orderTest:
+\end_layout
+
+\begin_layout Plain Layout
+
+        plsq = np.polyfit(xRange,yData,orderItem)
+\end_layout
+
+\begin_layout Plain Layout
+
+    print(plsq)
+\end_layout
+
+\begin_layout Plain Layout
+
+    C11.append(plsq[len(plsq)-3]*2*1000/(363077*6.2415))
+\end_layout
+
+\begin_layout Plain Layout
+
+    print 'the result C11 is', C11[i], 'GPa',     'with Degree',orderItem
+\end_layout
+
+\begin_layout Plain Layout
+
+    i=i+1
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.plot(orderTest, C11,'-or')
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.title('Polynomial fitting with different order to elastic data') 
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.xlabel(r'Degree of polynomial') 
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.ylabel('Young
+\backslash
+'s Modulus/GPa') 
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.gca().xaxis.set_minor_locator(MultipleLocator(1)) 
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.gca().xaxis.grid(True,which='minor')
+\end_layout
+
+\begin_layout Plain Layout
+
+plt.show() 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Sample experiment procedure
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Sample-experiment-procedure"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Equilibrium Lattice Constant
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Equilibrium-Lattice-Constant-1"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The procedure is:
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+cd
+\end_layout
+
+\end_inset
+
+
+\series default
+ to the directory storing the scripts, where the lammps executable is named
+ 
+\series bold
+
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+lmp_serial_mine
+\end_layout
+
+\end_inset
+
+
+\series default
+.
+\end_layout
+
+\begin_layout Enumerate
+Input the script to lammps:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+./lmp_serial_mine < homework.input
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Use Linux bash command 
+\series bold
+
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+grep
+\end_layout
+
+\end_inset
+
+
+\series default
+ and 
+\series bold
+
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+sed
+\end_layout
+
+\end_inset
+
+
+\series default
+ to format raw data for Matlab fitting: 
+\begin_inset listings
+lstparams "language=bash"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+grep ^@ log.lammps |sed 's/@ //g' >  homework_processed.data
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Launch Matlab and invoke the fitting script with the processed data: 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+calLatticeConstant(3,0.01,'homework_processed.data')
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The result is shown in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Equilibrium-Lattice-Constant"
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "sec:Equilibrium-Lattice-Constant"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Young's Modulus
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Young's-Modulus-1"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The procedure is:
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+cd
+\end_layout
+
+\end_inset
+
+
+\series default
+ to the directory storing the scripts, where the lammps executable is named
+ 
+\series bold
+
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+lmp_serial_mine
+\end_layout
+
+\end_inset
+
+
+\series default
+.
+\end_layout
+
+\begin_layout Enumerate
+Input the script to lammps:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+./lmp_serial_mine < homework_Young.input
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Use the python script 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lis:ex02_process_data.py"
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "lis:ex02_process_data.py"
+
+\end_inset
+
+ to format raw data for the fitting: 
+\begin_inset listings
+lstparams "breaklines=true,language=bash,showspaces=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+python ex02_process_data.py '/home/domicor/Documents/code/compiled/examples_for_l
+mps/homework/log.lammps'
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Use the python script 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lis:fittingPoly.py"
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "lis:fittingPoly.py"
+
+\end_inset
+
+ to fit: 
+\begin_inset listings
+lstparams "breaklines=true,language=bash,showspaces=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+python fittingPoly.py '/home/domicor/Documents/code/compiled/examples_for_lmps/ho
+mework/log.lammps.output'
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Use the python script 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lis:fittingPolyDegree.py"
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "lis:fittingPolyDegree.py"
+
+\end_inset
+
+ to test the influence of order of polynomials:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset listings
+lstparams "breaklines=true,language=bash,showspaces=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+python fittingPolyDegree.py '/home/domicor/Documents/code/compiled/examples_for_l
+mps/homework/log.lammps.output'
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The result is shown in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Young's-Modulus"
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "sec:Young's-Modulus"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch NoChildDocument
+status collapsed
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "biblio/Plasma"
+options "biblio/alpha"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset nomencl_print
+LatexCommand printnomenclature
+set_width "custom"
+width "2.5cm"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,1123 @@
+LAMMPS (28 Jun 2014)
+# Homework solution by Domicor (g1114128525@gmail.com)
+
+# Settings
+units	 	metal
+boundary	p p p
+atom_style	atomic
+
+# Build the model
+lattice		diamond 3.567 # according to the table
+Lattice spacing in x,y,z = 3.567 3.567 3.567
+region		box block 0 20 0 20 0 20
+create_box	1 box
+Created orthogonal box = (0 0 0) to (71.34 71.34 71.34)
+  1 by 1 by 1 MPI processor grid
+create_atoms	1 box
+Created 64000 atoms
+
+# Specify the potential
+pair_style	tersoff
+pair_coeff	* * SiC.tersoff C
+mass		1 12
+
+# set the format
+thermo_style 	custom step lz vol
+thermo		100
+
+# minimize the total energy
+min_style	cg
+
+label		begin
+variable	t loop 21
+fix		1 all deform 1 z delta 0.0 216.9E-3 units box
+minimize	1.0e-6 1.0e-6 1000 10000
+WARNING: Resetting reneighboring criteria during minimization (../min.cpp:168)
+Memory usage per processor = 21.1024 Mbytes
+Step Lz Volume 
+       0        71.34    363077.48 
+       1        71.34    363077.48 
+Loop time of 0.954966 on 1 procs for 1 steps with 64000 atoms
+
+Minimization stats:
+  Stopping criterion = energy tolerance
+  Energy initial, next-to-last, final = 
+        -471563.715475     -471563.715475     -471563.715475
+  Force two-norm initial, final = 6.10361e-11 5.35714e-09
+  Force max component initial, final = 5.76372e-13 4.9552e-11
+  Final line search alpha, max atom move = 1 4.9552e-11
+  Iterations, force evaluations = 1 1
+
+Pair  time (%) = 0.950104 (99.4909)
+Neigh time (%) = 0 (0)
+Comm  time (%) = 0.000740051 (0.077495)
+Outpt time (%) = 0 (0)
+Other time (%) = 0.00412202 (0.43164)
+
+Nlocal:    64000 ave 64000 max 64000 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    24155 ave 24155 max 24155 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    0 ave 0 max 0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:  2.944e+06 ave 2.944e+06 max 2.944e+06 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 2944000
+Ave neighs/atom = 46
+Neighbor list builds = 0
+Dangerous builds = 0
+
+run 		1 post no
+Memory usage per processor = 14.3588 Mbytes
+Step Lz Volume 
+       1        71.34    363077.48 
+       2      71.5569    364181.37 
+Loop time of 0.47825 on 1 procs for 1 steps with 64000 atoms
+
+unfix		1
+
+# loop
+
+next		t
+jump		homework_Young.input begin
+variable	t loop 21
+fix		1 all deform 1 z delta 0.0 216.9E-3 units box
+minimize	1.0e-6 1.0e-6 1000 10000
+WARNING: Resetting reneighboring criteria during minimization (../min.cpp:168)
+Memory usage per processor = 21.1088 Mbytes
+Step Lz Volume 
+       2      71.5569    364181.37 
+       3      71.5569    364181.37 
+Loop time of 1.44752 on 1 procs for 1 steps with 64000 atoms
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+        -471549.663397     -471549.663397     -471549.663397
+  Force two-norm initial, final = 5.32762e-09 5.32762e-09
+  Force max component initial, final = 4.94155e-11 4.94155e-11
+  Final line search alpha, max atom move = 0.5 2.47078e-11
+  Iterations, force evaluations = 1 2
+
+Pair  time (%) = 1.44135 (99.574)
+Neigh time (%) = 0 (0)
+Comm  time (%) = 0.00115633 (0.0798838)
+Outpt time (%) = 0 (0)
+Other time (%) = 0.00500965 (0.346086)
+
+Nlocal:    64000 ave 64000 max 64000 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    24155 ave 24155 max 24155 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    0 ave 0 max 0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:  2.944e+06 ave 2.944e+06 max 2.944e+06 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 2944000
+Ave neighs/atom = 46
+Neighbor list builds = 0
+Dangerous builds = 0
+
+run 		1 post no
+Memory usage per processor = 14.3588 Mbytes
+Step Lz Volume 
+       3      71.5569    364181.37 
+       4      71.7738    365285.26 
+Loop time of 0.48393 on 1 procs for 1 steps with 64000 atoms
+
+unfix		1
+
+# loop
+
+next		t
+jump		homework_Young.input begin
+variable	t loop 21
+fix		1 all deform 1 z delta 0.0 216.9E-3 units box
+minimize	1.0e-6 1.0e-6 1000 10000
+WARNING: Resetting reneighboring criteria during minimization (../min.cpp:168)
+Memory usage per processor = 21.1149 Mbytes
+Step Lz Volume 
+       4      71.7738    365285.26 
+       5      71.7738    365285.26 
+Loop time of 1.45205 on 1 procs for 1 steps with 64000 atoms
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+        -471513.384047     -471513.384047     -471513.384047
+  Force two-norm initial, final = 5.29705e-09 5.29705e-09
+  Force max component initial, final = 4.92572e-11 4.92572e-11
+  Final line search alpha, max atom move = 0.5 2.46286e-11
+  Iterations, force evaluations = 1 2
+
+Pair  time (%) = 1.44575 (99.5661)
+Neigh time (%) = 0 (0)
+Comm  time (%) = 0.00119996 (0.0826392)
+Outpt time (%) = 0 (0)
+Other time (%) = 0.00510001 (0.351229)
+
+Nlocal:    64000 ave 64000 max 64000 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    24155 ave 24155 max 24155 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    0 ave 0 max 0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:  2.944e+06 ave 2.944e+06 max 2.944e+06 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 2944000
+Ave neighs/atom = 46
+Neighbor list builds = 0
+Dangerous builds = 0
+
+run 		1 post no
+Memory usage per processor = 14.3649 Mbytes
+Step Lz Volume 
+       5      71.7738    365285.26 
+       6      71.9907    366389.15 
+Loop time of 0.487332 on 1 procs for 1 steps with 64000 atoms
+
+unfix		1
+
+# loop
+
+next		t
+jump		homework_Young.input begin
+variable	t loop 21
+fix		1 all deform 1 z delta 0.0 216.9E-3 units box
+minimize	1.0e-6 1.0e-6 1000 10000
+WARNING: Resetting reneighboring criteria during minimization (../min.cpp:168)
+Memory usage per processor = 21.1149 Mbytes
+Step Lz Volume 
+       6      71.9907    366389.15 
+       7      71.9907    366389.15 
+Loop time of 1.44849 on 1 procs for 1 steps with 64000 atoms
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+        -471455.091208     -471455.091208     -471455.091208
+  Force two-norm initial, final = 5.26033e-09 5.26033e-09
+  Force max component initial, final = 4.9132e-11 4.9132e-11
+  Final line search alpha, max atom move = 0.5 2.4566e-11
+  Iterations, force evaluations = 1 2
+
+Pair  time (%) = 1.44231 (99.5734)
+Neigh time (%) = 0 (0)
+Comm  time (%) = 0.00113797 (0.0785628)
+Outpt time (%) = 0 (0)
+Other time (%) = 0.00504112 (0.348027)
+
+Nlocal:    64000 ave 64000 max 64000 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    24155 ave 24155 max 24155 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    0 ave 0 max 0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:  2.944e+06 ave 2.944e+06 max 2.944e+06 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 2944000
+Ave neighs/atom = 46
+Neighbor list builds = 0
+Dangerous builds = 0
+
+run 		1 post no
+Memory usage per processor = 14.3649 Mbytes
+Step Lz Volume 
+       7      71.9907    366389.15 
+       8      72.2076    367493.04 
+Loop time of 0.488031 on 1 procs for 1 steps with 64000 atoms
+
+unfix		1
+
+# loop
+
+next		t
+jump		homework_Young.input begin
+variable	t loop 21
+fix		1 all deform 1 z delta 0.0 216.9E-3 units box
+minimize	1.0e-6 1.0e-6 1000 10000
+WARNING: Resetting reneighboring criteria during minimization (../min.cpp:168)
+Memory usage per processor = 21.1149 Mbytes
+Step Lz Volume 
+       8      72.2076    367493.04 
+       9      72.2076    367493.04 
+Loop time of 0.96791 on 1 procs for 1 steps with 64000 atoms
+
+Minimization stats:
+  Stopping criterion = energy tolerance
+  Energy initial, next-to-last, final = 
+          -471375.0011       -471375.0011     -471375.001103
+  Force two-norm initial, final = 5.22446e-09 4.82686e-07
+  Force max component initial, final = 4.90794e-11 4.46617e-09
+  Final line search alpha, max atom move = 1 4.46617e-09
+  Iterations, force evaluations = 1 1
+
+Pair  time (%) = 0.962873 (99.4796)
+Neigh time (%) = 0 (0)
+Comm  time (%) = 0.000766993 (0.0792422)
+Outpt time (%) = 0 (0)
+Other time (%) = 0.0042696 (0.441115)
+
+Nlocal:    64000 ave 64000 max 64000 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    24155 ave 24155 max 24155 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    0 ave 0 max 0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:  2.944e+06 ave 2.944e+06 max 2.944e+06 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 2944000
+Ave neighs/atom = 46
+Neighbor list builds = 0
+Dangerous builds = 0
+
+run 		1 post no
+Memory usage per processor = 14.3649 Mbytes
+Step Lz Volume 
+       9      72.2076    367493.04 
+      10      72.4245    368596.93 
+Loop time of 0.481136 on 1 procs for 1 steps with 64000 atoms
+
+unfix		1
+
+# loop
+
+next		t
+jump		homework_Young.input begin
+variable	t loop 21
+fix		1 all deform 1 z delta 0.0 216.9E-3 units box
+minimize	1.0e-6 1.0e-6 1000 10000
+WARNING: Resetting reneighboring criteria during minimization (../min.cpp:168)
+Memory usage per processor = 21.1149 Mbytes
+Step Lz Volume 
+      10      72.4245    368596.93 
+      11      72.4245    368596.93 
+Loop time of 0.97026 on 1 procs for 1 steps with 64000 atoms
+
+Minimization stats:
+  Stopping criterion = energy tolerance
+  Energy initial, next-to-last, final = 
+        -471273.332275     -471273.332275     -471273.332275
+  Force two-norm initial, final = 4.79987e-07 4.5673e-05
+  Force max component initial, final = 4.45646e-09 4.22033e-07
+  Final line search alpha, max atom move = 1 4.22033e-07
+  Iterations, force evaluations = 1 1
+
+Pair  time (%) = 0.965274 (99.4861)
+Neigh time (%) = 0 (0)
+Comm  time (%) = 0.000742912 (0.0765684)
+Outpt time (%) = 0 (0)
+Other time (%) = 0.00424314 (0.437319)
+
+Nlocal:    64000 ave 64000 max 64000 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    24155 ave 24155 max 24155 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    0 ave 0 max 0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:  2.944e+06 ave 2.944e+06 max 2.944e+06 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 2944000
+Ave neighs/atom = 46
+Neighbor list builds = 0
+Dangerous builds = 0
+
+run 		1 post no
+Memory usage per processor = 14.3649 Mbytes
+Step Lz Volume 
+      11      72.4245    368596.93 
+      12      72.6414    369700.82 
+Loop time of 0.482424 on 1 procs for 1 steps with 64000 atoms
+
+unfix		1
+
+# loop
+
+next		t
+jump		homework_Young.input begin
+variable	t loop 21
+fix		1 all deform 1 z delta 0.0 216.9E-3 units box
+minimize	1.0e-6 1.0e-6 1000 10000
+WARNING: Resetting reneighboring criteria during minimization (../min.cpp:168)
+Memory usage per processor = 21.1149 Mbytes
+Step Lz Volume 
+      12      72.6414    369700.82 
+      13      72.6414    369700.82 
+Loop time of 1.45351 on 1 procs for 1 steps with 64000 atoms
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+        -471150.305482     -471150.305482     -471150.305482
+  Force two-norm initial, final = 4.54332e-05 4.54332e-05
+  Force max component initial, final = 4.21148e-07 4.21148e-07
+  Final line search alpha, max atom move = 0.5 2.10574e-07
+  Iterations, force evaluations = 1 2
+
+Pair  time (%) = 1.44737 (99.5777)
+Neigh time (%) = 0 (0)
+Comm  time (%) = 0.00113773 (0.078275)
+Outpt time (%) = 0 (0)
+Other time (%) = 0.00500011 (0.344003)
+
+Nlocal:    64000 ave 64000 max 64000 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    24155 ave 24155 max 24155 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    0 ave 0 max 0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:  2.944e+06 ave 2.944e+06 max 2.944e+06 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 2944000
+Ave neighs/atom = 46
+Neighbor list builds = 0
+Dangerous builds = 0
+
+run 		1 post no
+Memory usage per processor = 14.3649 Mbytes
+Step Lz Volume 
+      13      72.6414    369700.82 
+      14      72.8583    370804.71 
+Loop time of 0.487796 on 1 procs for 1 steps with 64000 atoms
+
+unfix		1
+
+# loop
+
+next		t
+jump		homework_Young.input begin
+variable	t loop 21
+fix		1 all deform 1 z delta 0.0 216.9E-3 units box
+minimize	1.0e-6 1.0e-6 1000 10000
+WARNING: Resetting reneighboring criteria during minimization (../min.cpp:168)
+Memory usage per processor = 21.1149 Mbytes
+Step Lz Volume 
+      14      72.8583    370804.71 
+      15      72.8583    370804.71 
+Loop time of 1.45564 on 1 procs for 1 steps with 64000 atoms
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+         -471006.14359      -471006.14359      -471006.14359
+  Force two-norm initial, final = 4.51924e-05 4.51924e-05
+  Force max component initial, final = 4.20242e-07 4.20242e-07
+  Final line search alpha, max atom move = 0.5 2.10121e-07
+  Iterations, force evaluations = 1 2
+
+Pair  time (%) = 1.44946 (99.5749)
+Neigh time (%) = 0 (0)
+Comm  time (%) = 0.00116682 (0.0801583)
+Outpt time (%) = 0 (0)
+Other time (%) = 0.00502181 (0.344989)
+
+Nlocal:    64000 ave 64000 max 64000 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    24155 ave 24155 max 24155 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    0 ave 0 max 0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:  2.944e+06 ave 2.944e+06 max 2.944e+06 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 2944000
+Ave neighs/atom = 46
+Neighbor list builds = 0
+Dangerous builds = 0
+
+run 		1 post no
+Memory usage per processor = 14.3649 Mbytes
+Step Lz Volume 
+      15      72.8583    370804.71 
+      16      73.0752     371908.6 
+Loop time of 0.490172 on 1 procs for 1 steps with 64000 atoms
+
+unfix		1
+
+# loop
+
+next		t
+jump		homework_Young.input begin
+variable	t loop 21
+fix		1 all deform 1 z delta 0.0 216.9E-3 units box
+minimize	1.0e-6 1.0e-6 1000 10000
+WARNING: Resetting reneighboring criteria during minimization (../min.cpp:168)
+Memory usage per processor = 21.1149 Mbytes
+Step Lz Volume 
+      16      73.0752     371908.6 
+      17      73.0752     371908.6 
+Loop time of 1.45781 on 1 procs for 1 steps with 64000 atoms
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+        -470841.071463     -470841.071463     -470841.071463
+  Force two-norm initial, final = 4.49508e-05 4.49508e-05
+  Force max component initial, final = 4.19316e-07 4.19316e-07
+  Final line search alpha, max atom move = 0.5 2.09658e-07
+  Iterations, force evaluations = 1 2
+
+Pair  time (%) = 1.45154 (99.5701)
+Neigh time (%) = 0 (0)
+Comm  time (%) = 0.00123477 (0.0847004)
+Outpt time (%) = 0 (0)
+Other time (%) = 0.00503206 (0.34518)
+
+Nlocal:    64000 ave 64000 max 64000 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    24155 ave 24155 max 24155 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    0 ave 0 max 0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:  2.944e+06 ave 2.944e+06 max 2.944e+06 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 2944000
+Ave neighs/atom = 46
+Neighbor list builds = 0
+Dangerous builds = 0
+
+run 		1 post no
+Memory usage per processor = 14.3649 Mbytes
+Step Lz Volume 
+      17      73.0752     371908.6 
+      18      73.2921    373012.49 
+Loop time of 0.498865 on 1 procs for 1 steps with 64000 atoms
+
+unfix		1
+
+# loop
+
+next		t
+jump		homework_Young.input begin
+variable	t loop 21
+fix		1 all deform 1 z delta 0.0 216.9E-3 units box
+minimize	1.0e-6 1.0e-6 1000 10000
+WARNING: Resetting reneighboring criteria during minimization (../min.cpp:168)
+Memory usage per processor = 21.1149 Mbytes
+Step Lz Volume 
+      18      73.2921    373012.49 
+      19      73.2921    373012.49 
+Loop time of 1.45628 on 1 procs for 1 steps with 64000 atoms
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+        -470655.315854     -470655.315854     -470655.315854
+  Force two-norm initial, final = 4.47083e-05 4.47083e-05
+  Force max component initial, final = 4.1837e-07 4.1837e-07
+  Final line search alpha, max atom move = 0.5 2.09185e-07
+  Iterations, force evaluations = 1 2
+
+Pair  time (%) = 1.45006 (99.5732)
+Neigh time (%) = 0 (0)
+Comm  time (%) = 0.00115085 (0.0790264)
+Outpt time (%) = 0 (0)
+Other time (%) = 0.0050652 (0.347818)
+
+Nlocal:    64000 ave 64000 max 64000 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    24155 ave 24155 max 24155 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    0 ave 0 max 0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:  2.944e+06 ave 2.944e+06 max 2.944e+06 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 2944000
+Ave neighs/atom = 46
+Neighbor list builds = 0
+Dangerous builds = 0
+
+run 		1 post no
+Memory usage per processor = 14.3649 Mbytes
+Step Lz Volume 
+      19      73.2921    373012.49 
+      20       73.509    374116.38 
+Loop time of 0.486203 on 1 procs for 1 steps with 64000 atoms
+
+unfix		1
+
+# loop
+
+next		t
+jump		homework_Young.input begin
+variable	t loop 21
+fix		1 all deform 1 z delta 0.0 216.9E-3 units box
+minimize	1.0e-6 1.0e-6 1000 10000
+WARNING: Resetting reneighboring criteria during minimization (../min.cpp:168)
+Memory usage per processor = 21.1149 Mbytes
+Step Lz Volume 
+      20       73.509    374116.38 
+      21       73.509    374116.38 
+Loop time of 1.45552 on 1 procs for 1 steps with 64000 atoms
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+        -470449.105295     -470449.105295     -470449.105295
+  Force two-norm initial, final = 4.44651e-05 4.44651e-05
+  Force max component initial, final = 4.17402e-07 4.17402e-07
+  Final line search alpha, max atom move = 0.5 2.08701e-07
+  Iterations, force evaluations = 1 2
+
+Pair  time (%) = 1.44927 (99.5707)
+Neigh time (%) = 0 (0)
+Comm  time (%) = 0.00117326 (0.0806077)
+Outpt time (%) = 0 (0)
+Other time (%) = 0.00507474 (0.348656)
+
+Nlocal:    64000 ave 64000 max 64000 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    24155 ave 24155 max 24155 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    0 ave 0 max 0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:  2.944e+06 ave 2.944e+06 max 2.944e+06 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 2944000
+Ave neighs/atom = 46
+Neighbor list builds = 0
+Dangerous builds = 0
+
+run 		1 post no
+Memory usage per processor = 14.3649 Mbytes
+Step Lz Volume 
+      21       73.509    374116.38 
+      22      73.7259    375220.27 
+Loop time of 0.486175 on 1 procs for 1 steps with 64000 atoms
+
+unfix		1
+
+# loop
+
+next		t
+jump		homework_Young.input begin
+variable	t loop 21
+fix		1 all deform 1 z delta 0.0 216.9E-3 units box
+minimize	1.0e-6 1.0e-6 1000 10000
+WARNING: Resetting reneighboring criteria during minimization (../min.cpp:168)
+Memory usage per processor = 21.1149 Mbytes
+Step Lz Volume 
+      22      73.7259    375220.27 
+      23      73.7259    375220.27 
+Loop time of 1.46044 on 1 procs for 1 steps with 64000 atoms
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+        -470222.669987     -470222.669987     -470222.669987
+  Force two-norm initial, final = 4.42213e-05 4.42213e-05
+  Force max component initial, final = 4.16412e-07 4.16412e-07
+  Final line search alpha, max atom move = 0.5 2.08206e-07
+  Iterations, force evaluations = 1 2
+
+Pair  time (%) = 1.45429 (99.5786)
+Neigh time (%) = 0 (0)
+Comm  time (%) = 0.00113416 (0.0776584)
+Outpt time (%) = 0 (0)
+Other time (%) = 0.00502086 (0.34379)
+
+Nlocal:    64000 ave 64000 max 64000 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    24155 ave 24155 max 24155 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    0 ave 0 max 0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:  2.944e+06 ave 2.944e+06 max 2.944e+06 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 2944000
+Ave neighs/atom = 46
+Neighbor list builds = 0
+Dangerous builds = 0
+
+run 		1 post no
+Memory usage per processor = 14.3649 Mbytes
+Step Lz Volume 
+      23      73.7259    375220.27 
+      24      73.9428    376324.16 
+Loop time of 0.489097 on 1 procs for 1 steps with 64000 atoms
+
+unfix		1
+
+# loop
+
+next		t
+jump		homework_Young.input begin
+variable	t loop 21
+fix		1 all deform 1 z delta 0.0 216.9E-3 units box
+minimize	1.0e-6 1.0e-6 1000 10000
+WARNING: Resetting reneighboring criteria during minimization (../min.cpp:168)
+Memory usage per processor = 21.121 Mbytes
+Step Lz Volume 
+      24      73.9428    376324.16 
+      25      73.9428    376324.16 
+Loop time of 1.45604 on 1 procs for 1 steps with 64000 atoms
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+        -469976.241692     -469976.241692     -469976.241692
+  Force two-norm initial, final = 4.39769e-05 4.39769e-05
+  Force max component initial, final = 4.15401e-07 4.15401e-07
+  Final line search alpha, max atom move = 0.5 2.07701e-07
+  Iterations, force evaluations = 1 2
+
+Pair  time (%) = 1.44978 (99.5698)
+Neigh time (%) = 0 (0)
+Comm  time (%) = 0.00115418 (0.0792686)
+Outpt time (%) = 0 (0)
+Other time (%) = 0.00511003 (0.350953)
+
+Nlocal:    64000 ave 64000 max 64000 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    24155 ave 24155 max 24155 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    0 ave 0 max 0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:  2.944e+06 ave 2.944e+06 max 2.944e+06 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 2944000
+Ave neighs/atom = 46
+Neighbor list builds = 0
+Dangerous builds = 0
+
+run 		1 post no
+Memory usage per processor = 14.371 Mbytes
+Step Lz Volume 
+      25      73.9428    376324.16 
+      26      74.1597    377428.05 
+Loop time of 0.487307 on 1 procs for 1 steps with 64000 atoms
+
+unfix		1
+
+# loop
+
+next		t
+jump		homework_Young.input begin
+variable	t loop 21
+fix		1 all deform 1 z delta 0.0 216.9E-3 units box
+minimize	1.0e-6 1.0e-6 1000 10000
+WARNING: Resetting reneighboring criteria during minimization (../min.cpp:168)
+Memory usage per processor = 21.121 Mbytes
+Step Lz Volume 
+      26      74.1597    377428.05 
+      27      74.1597    377428.05 
+Loop time of 1.45455 on 1 procs for 1 steps with 64000 atoms
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+         -469710.05362      -469710.05362      -469710.05362
+  Force two-norm initial, final = 4.37319e-05 4.37319e-05
+  Force max component initial, final = 4.14369e-07 4.14369e-07
+  Final line search alpha, max atom move = 0.5 2.07184e-07
+  Iterations, force evaluations = 1 2
+
+Pair  time (%) = 1.44833 (99.5727)
+Neigh time (%) = 0 (0)
+Comm  time (%) = 0.00115013 (0.0790714)
+Outpt time (%) = 0 (0)
+Other time (%) = 0.00506473 (0.3482)
+
+Nlocal:    64000 ave 64000 max 64000 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    24155 ave 24155 max 24155 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    0 ave 0 max 0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:  2.944e+06 ave 2.944e+06 max 2.944e+06 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 2944000
+Ave neighs/atom = 46
+Neighbor list builds = 0
+Dangerous builds = 0
+
+run 		1 post no
+Memory usage per processor = 14.371 Mbytes
+Step Lz Volume 
+      27      74.1597    377428.05 
+      28      74.3766    378531.94 
+Loop time of 0.49229 on 1 procs for 1 steps with 64000 atoms
+
+unfix		1
+
+# loop
+
+next		t
+jump		homework_Young.input begin
+variable	t loop 21
+fix		1 all deform 1 z delta 0.0 216.9E-3 units box
+minimize	1.0e-6 1.0e-6 1000 10000
+WARNING: Resetting reneighboring criteria during minimization (../min.cpp:168)
+Memory usage per processor = 21.121 Mbytes
+Step Lz Volume 
+      28      74.3766    378531.94 
+      29      74.3766    378531.94 
+Loop time of 1.45309 on 1 procs for 1 steps with 64000 atoms
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+        -469424.340322     -469424.340322     -469424.340322
+  Force two-norm initial, final = 4.34865e-05 4.34865e-05
+  Force max component initial, final = 4.13314e-07 4.13314e-07
+  Final line search alpha, max atom move = 0.5 2.06657e-07
+  Iterations, force evaluations = 1 2
+
+Pair  time (%) = 1.44694 (99.5768)
+Neigh time (%) = 0 (0)
+Comm  time (%) = 0.00115252 (0.0793148)
+Outpt time (%) = 0 (0)
+Other time (%) = 0.00499725 (0.343905)
+
+Nlocal:    64000 ave 64000 max 64000 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    24155 ave 24155 max 24155 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    0 ave 0 max 0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:  2.944e+06 ave 2.944e+06 max 2.944e+06 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 2944000
+Ave neighs/atom = 46
+Neighbor list builds = 0
+Dangerous builds = 0
+
+run 		1 post no
+Memory usage per processor = 14.371 Mbytes
+Step Lz Volume 
+      29      74.3766    378531.94 
+      30      74.5935    379635.83 
+Loop time of 0.488915 on 1 procs for 1 steps with 64000 atoms
+
+unfix		1
+
+# loop
+
+next		t
+jump		homework_Young.input begin
+variable	t loop 21
+fix		1 all deform 1 z delta 0.0 216.9E-3 units box
+minimize	1.0e-6 1.0e-6 1000 10000
+WARNING: Resetting reneighboring criteria during minimization (../min.cpp:168)
+Memory usage per processor = 21.121 Mbytes
+Step Lz Volume 
+      30      74.5935    379635.83 
+      31      74.5935    379635.83 
+Loop time of 1.45073 on 1 procs for 1 steps with 64000 atoms
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+        -469119.337579     -469119.337579     -469119.337579
+  Force two-norm initial, final = 4.32407e-05 4.32407e-05
+  Force max component initial, final = 4.12237e-07 4.12237e-07
+  Final line search alpha, max atom move = 0.5 2.06118e-07
+  Iterations, force evaluations = 1 2
+
+Pair  time (%) = 1.44452 (99.5719)
+Neigh time (%) = 0 (0)
+Comm  time (%) = 0.00117111 (0.0807258)
+Outpt time (%) = 0 (0)
+Other time (%) = 0.00503874 (0.347325)
+
+Nlocal:    64000 ave 64000 max 64000 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    24155 ave 24155 max 24155 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    0 ave 0 max 0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:  2.944e+06 ave 2.944e+06 max 2.944e+06 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 2944000
+Ave neighs/atom = 46
+Neighbor list builds = 0
+Dangerous builds = 0
+
+run 		1 post no
+Memory usage per processor = 14.371 Mbytes
+Step Lz Volume 
+      31      74.5935    379635.83 
+      32      74.8104    380739.72 
+Loop time of 0.485799 on 1 procs for 1 steps with 64000 atoms
+
+unfix		1
+
+# loop
+
+next		t
+jump		homework_Young.input begin
+variable	t loop 21
+fix		1 all deform 1 z delta 0.0 216.9E-3 units box
+minimize	1.0e-6 1.0e-6 1000 10000
+WARNING: Resetting reneighboring criteria during minimization (../min.cpp:168)
+Memory usage per processor = 21.121 Mbytes
+Step Lz Volume 
+      32      74.8104    380739.72 
+      33      74.8104    380739.72 
+Loop time of 1.45202 on 1 procs for 1 steps with 64000 atoms
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+        -468795.282297     -468795.282297     -468795.282297
+  Force two-norm initial, final = 4.29946e-05 4.29946e-05
+  Force max component initial, final = 4.11137e-07 4.11137e-07
+  Final line search alpha, max atom move = 0.5 2.05569e-07
+  Iterations, force evaluations = 1 2
+
+Pair  time (%) = 1.44585 (99.5752)
+Neigh time (%) = 0 (0)
+Comm  time (%) = 0.00114417 (0.0787984)
+Outpt time (%) = 0 (0)
+Other time (%) = 0.00502396 (0.345997)
+
+Nlocal:    64000 ave 64000 max 64000 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    24155 ave 24155 max 24155 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    0 ave 0 max 0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:  2.944e+06 ave 2.944e+06 max 2.944e+06 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 2944000
+Ave neighs/atom = 46
+Neighbor list builds = 0
+Dangerous builds = 0
+
+run 		1 post no
+Memory usage per processor = 14.371 Mbytes
+Step Lz Volume 
+      33      74.8104    380739.72 
+      34      75.0273    381843.61 
+Loop time of 0.487201 on 1 procs for 1 steps with 64000 atoms
+
+unfix		1
+
+# loop
+
+next		t
+jump		homework_Young.input begin
+variable	t loop 21
+fix		1 all deform 1 z delta 0.0 216.9E-3 units box
+minimize	1.0e-6 1.0e-6 1000 10000
+WARNING: Resetting reneighboring criteria during minimization (../min.cpp:168)
+Memory usage per processor = 21.121 Mbytes
+Step Lz Volume 
+      34      75.0273    381843.61 
+      35      75.0273    381843.61 
+Loop time of 1.4533 on 1 procs for 1 steps with 64000 atoms
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+        -468452.412391     -468452.412391     -468452.412391
+  Force two-norm initial, final = 4.27483e-05 4.27483e-05
+  Force max component initial, final = 4.10015e-07 4.10015e-07
+  Final line search alpha, max atom move = 0.5 2.05008e-07
+  Iterations, force evaluations = 1 2
+
+Pair  time (%) = 1.44712 (99.575)
+Neigh time (%) = 0 (0)
+Comm  time (%) = 0.00116134 (0.0799104)
+Outpt time (%) = 0 (0)
+Other time (%) = 0.00501585 (0.345136)
+
+Nlocal:    64000 ave 64000 max 64000 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    24155 ave 24155 max 24155 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    0 ave 0 max 0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:  2.944e+06 ave 2.944e+06 max 2.944e+06 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 2944000
+Ave neighs/atom = 46
+Neighbor list builds = 0
+Dangerous builds = 0
+
+run 		1 post no
+Memory usage per processor = 14.371 Mbytes
+Step Lz Volume 
+      35      75.0273    381843.61 
+      36      75.2442     382947.5 
+Loop time of 0.489521 on 1 procs for 1 steps with 64000 atoms
+
+unfix		1
+
+# loop
+
+next		t
+jump		homework_Young.input begin
+variable	t loop 21
+fix		1 all deform 1 z delta 0.0 216.9E-3 units box
+minimize	1.0e-6 1.0e-6 1000 10000
+WARNING: Resetting reneighboring criteria during minimization (../min.cpp:168)
+Memory usage per processor = 21.121 Mbytes
+Step Lz Volume 
+      36      75.2442     382947.5 
+      37      75.2442     382947.5 
+Loop time of 1.45099 on 1 procs for 1 steps with 64000 atoms
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+        -468090.966688     -468090.966688     -468090.966688
+  Force two-norm initial, final = 4.25017e-05 4.25017e-05
+  Force max component initial, final = 4.08871e-07 4.08871e-07
+  Final line search alpha, max atom move = 0.5 2.04435e-07
+  Iterations, force evaluations = 1 2
+
+Pair  time (%) = 1.44474 (99.5693)
+Neigh time (%) = 0 (0)
+Comm  time (%) = 0.00114608 (0.078986)
+Outpt time (%) = 0 (0)
+Other time (%) = 0.00510311 (0.351699)
+
+Nlocal:    64000 ave 64000 max 64000 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    24155 ave 24155 max 24155 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    0 ave 0 max 0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:  2.944e+06 ave 2.944e+06 max 2.944e+06 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 2944000
+Ave neighs/atom = 46
+Neighbor list builds = 0
+Dangerous builds = 0
+
+run 		1 post no
+Memory usage per processor = 14.371 Mbytes
+Step Lz Volume 
+      37      75.2442     382947.5 
+      38      75.4611    384051.39 
+Loop time of 0.486598 on 1 procs for 1 steps with 64000 atoms
+
+unfix		1
+
+# loop
+
+next		t
+jump		homework_Young.input begin
+variable	t loop 21
+fix		1 all deform 1 z delta 0.0 216.9E-3 units box
+minimize	1.0e-6 1.0e-6 1000 10000
+WARNING: Resetting reneighboring criteria during minimization (../min.cpp:168)
+Memory usage per processor = 21.121 Mbytes
+Step Lz Volume 
+      38      75.4611    384051.39 
+      39      75.4611    384051.39 
+Loop time of 1.45294 on 1 procs for 1 steps with 64000 atoms
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+        -467711.184811     -467711.184811     -467711.184811
+  Force two-norm initial, final = 4.2255e-05 4.2255e-05
+  Force max component initial, final = 4.07703e-07 4.07703e-07
+  Final line search alpha, max atom move = 0.5 2.03852e-07
+  Iterations, force evaluations = 1 2
+
+Pair  time (%) = 1.44676 (99.5751)
+Neigh time (%) = 0 (0)
+Comm  time (%) = 0.00115371 (0.0794053)
+Outpt time (%) = 0 (0)
+Other time (%) = 0.00501919 (0.345451)
+
+Nlocal:    64000 ave 64000 max 64000 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    24155 ave 24155 max 24155 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    0 ave 0 max 0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:  2.944e+06 ave 2.944e+06 max 2.944e+06 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 2944000
+Ave neighs/atom = 46
+Neighbor list builds = 0
+Dangerous builds = 0
+
+run 		1 post no
+Memory usage per processor = 14.371 Mbytes
+Step Lz Volume 
+      39      75.4611    384051.39 
+      40       75.678    385155.28 
+Loop time of 0.489059 on 1 procs for 1 steps with 64000 atoms
+
+unfix		1
+
+# loop
+
+next		t
+jump		homework_Young.input begin
+variable	t loop 21
+fix		1 all deform 1 z delta 0.0 216.9E-3 units box
+minimize	1.0e-6 1.0e-6 1000 10000
+WARNING: Resetting reneighboring criteria during minimization (../min.cpp:168)
+Memory usage per processor = 21.121 Mbytes
+Step Lz Volume 
+      40       75.678    385155.28 
+      41       75.678    385155.28 
+Loop time of 1.45595 on 1 procs for 1 steps with 64000 atoms
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+        -467313.307081     -467313.307081     -467313.307081
+  Force two-norm initial, final = 4.20082e-05 4.20082e-05
+  Force max component initial, final = 4.06514e-07 4.06514e-07
+  Final line search alpha, max atom move = 0.5 2.03257e-07
+  Iterations, force evaluations = 1 2
+
+Pair  time (%) = 1.44962 (99.565)
+Neigh time (%) = 0 (0)
+Comm  time (%) = 0.00117016 (0.0803707)
+Outpt time (%) = 0 (0)
+Other time (%) = 0.00516391 (0.354676)
+
+Nlocal:    64000 ave 64000 max 64000 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    24155 ave 24155 max 24155 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    0 ave 0 max 0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:  2.944e+06 ave 2.944e+06 max 2.944e+06 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 2944000
+Ave neighs/atom = 46
+Neighbor list builds = 0
+Dangerous builds = 0
+
+run 		1 post no
+Memory usage per processor = 14.371 Mbytes
+Step Lz Volume 
+      41       75.678    385155.28 
+      42      75.8949    386259.17 
+Loop time of 0.490352 on 1 procs for 1 steps with 64000 atoms
+
+unfix		1
+
+# loop
+
+next		t
+jump		homework_Young.input begin

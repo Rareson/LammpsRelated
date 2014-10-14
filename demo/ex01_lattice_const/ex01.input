@@ -1,0 +1,70 @@
+# This input script is used to calculate 
+# the lattice constant of diamond
+# Lab of Advanced Materials Design: http://lamd.hust.edu.cn/
+
+
+# basic settings
+# ----------------------------------------------------------------------------
+
+# Set the style of units used for a simulation
+units           	metal
+# Set the style of boundaries for the global simulation box in each dimension. 
+# p for periodic
+boundary        	p p p
+# Define what style of atoms to use in a simulation. 
+# This determines what attributes are associated with the atoms.
+atom_style      	atomic
+
+# build the model
+# ----------------------------------------------------------------------------
+
+# Define a lattice for use by other commands.
+# common: sc/bcc/fcc/hcp/diamond/custom
+lattice          	diamond 3.5
+# This command defines a geometric region of space. 
+region          	box block 0 5 0 5 0 5
+# This command creates a simulation box based on the specified region.
+create_box      	1 box
+# This command creates atoms on a lattice.
+create_atoms    	1 box
+
+# specify the potential
+# ----------------------------------------------------------------------------
+
+# Set the formula(s) LAMMPS uses to compute pairwise interactions.
+# common: lj/morse/sw/tersoff/eam/meam
+pair_style      	tersoff
+# Specify the pairwise force field coefficients for one or more pairs of atom types.
+pair_coeff      	* * SiC.tersoff C
+# Set the mass for all atoms of one or more atom types.
+mass               	1 12
+
+# define some variables
+# ----------------------------------------------------------------------------
+
+# Some built-in variables and functions can be used directly.
+
+# 'all' is a built-in group which includes all the atoms.
+# 'count' is a built-in function which is used to count the number of atoms in the specified group.
+# 'count(all)' is used to obtain the number of atoms for current model.
+variable        	n equal count(all)
+# 'pe' is a built-in variable which represents the total potential energy for current model.
+# 'pe/$n' means the potential energy per atom.
+variable        	P equal pe/$n
+
+# calculate the static energy
+# ----------------------------------------------------------------------------
+
+# Run or continue dynamics for a specified number of timesteps.
+# A value of N = 0 is acceptable; 
+# only the thermodynamics of the system are computed and printed without taking a timestep.
+run             	0
+
+# output the result
+# ----------------------------------------------------------------------------
+
+# Print a text string to the screen and logfile. 
+# '$P' is the reference to the variable defined above.
+# '@' is a symbol simply used for locating the string.
+print           	"@ energy per atom: $P"
+

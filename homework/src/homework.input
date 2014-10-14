@@ -1,0 +1,38 @@
+# Homework solution by Domicor (g1114128525@gmail.com)
+
+# Settings
+units	 	metal
+boundary	p p p
+atom_style	atomic
+
+# Variables
+variable	i loop 20
+variable	x equal 3.5+0.01*$i # the lattice constant to test
+
+# Build the model
+lattice		diamond $x
+region		box block 0 10 0 10 0 10
+create_box	1 box
+create_atoms	1 box
+
+# Specify the potential
+pair_style	tersoff
+pair_coeff	* * SiC.tersoff C
+mass		1 12
+
+variable	n equal count(all)
+variable	P equal pe/$n
+
+timestep	0.005
+thermo		10
+
+# minimize the total energy
+min_style	cg
+minimize	1.0e-12 1.0e-12 1000 1000
+
+print		"@ $x $P"
+
+# loop
+clear
+next		i
+jump		homework.input

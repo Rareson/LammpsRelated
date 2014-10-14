@@ -1,0 +1,153 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass scrbook
+\begin_preamble
+% enables calculations
+\usepackage{calc}
+
+% increases the bottom float placement fraction
+\renewcommand{\bottomfraction}{0.5}
+\end_preamble
+\options intoc,bibliography=totoc,index=totoc,BCOR10mm,captions=tableheading,titlepage,fleqn
+\use_default_options true
+\master thesis.lyx
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman lmodern
+\font_sans lmss
+\font_typewriter lmtt
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Abstract"
+\pdf_author "Your name"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 2
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry false
+\use_amsmath 2
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter*
+Abstract
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{chapter}{Abstract} 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+adds table of contents entry
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This article discuss the molecular dynamics simulation solution to the calculati
+on of the equilibrium lattice constant and Young's modulus of diamond.
+ With the observation that the cohesive energy of diamond would reach the
+ global minimum value when in equilibrium, or in terms of calculation, when
+ the lattice constant reaches the extreme point, we have the calculated
+ result of the lattice constant of 3.5659
+\begin_inset space ~
+\end_inset
+
+Å, with cohesive energy of -7.3682
+\begin_inset space ~
+\end_inset
+
+eV, which is close to the numerical result given by literature, 3.57
+\begin_inset space ~
+\end_inset
+
+Å.
+ The Young's modulus of diamond is investigated through the intrinsic thermal
+ vibration in diamond which can be simulated by molecular dynamics and the
+ result 1100.19107894
+\begin_inset space ~
+\end_inset
+
+GPa agrees very well with the experiment data, about 1100
+\begin_inset space ~
+\end_inset
+
+GPa, provided by two sources including a journal-like article but barely
+ meets the quantity proposed by wikipedia, 1220
+\begin_inset space ~
+\end_inset
+
+GPa.
+\end_layout
+
+\end_body
+\end_document

@@ -14,36 +14,50 @@ you can easily have a good idea of how I implemented these processes,
 such as how these packages are installed, how to test these examples. So I'll
 write no README files under every example due to my lacking of time.
 
+Repository structure
+=====================
 
-installClass.sh
+
+compile
 ---------------
-The script "installClass" provides the minimum working environment for LAMMPS as
-required in my Computational Materials course.
-
-Usage:
-(Replace "~/Documents/code" by the path where you put the repository.)
-
-	cd ~/Documents/code
-	chmod +x ./installClass.sh
-	./installClass.sh
-
-After this, the lmp_serial is located in a file folder named "compiled".
-
-You can test it with:
-	(Replace "~/Documents/code" by the path where you put the repository.)
-
-	cd ~/Documents/code/testInput/
-	../compiled/lmp_serial<~/Documents/code/testInput/ex02.input
+This is where the scripts for compiling LAMMPS are located.
 
 
-installLAMMPS.sh
+demo
 ---------------
-This script is unfinished.
+In this folder, there are some examples which can run with the source package shipped with my release.
 
-This script is intended for full installation of LAMPPS with all its functionalities anabled.
+doc
+-------------
+Some notes and documentation (maybe not that formal, I will try).
 
-But some problems are still unresolved. Sorry for any confusion or inconvenience.
+gui
+-------------
+GUI related stuff, such as Qt sources files for the GUI and converted python modules used in the GUI.
+
+homework
+-----------
+This is my first Computational Materials homework. I provide the lyx source file and all listings of source code used in my calculation.
+
+misc
+------------
+Collections of valuable items that helped with the repository.
+
+project
+-----------
+My project which is the final test of my Computational Materials course.
+
+pyqtgraph
+---------
+This is a subtree folder. These files are great for scientific purposes.
+
+tools
+--------
+Some related useful small tools, such as AtomEye.
 
 Acknowledgements
-----------------
+==============
+Books that serves as solid foundation of my coding:
+Rapid GUI programming with Python and Qt : the definitive guide to PyQt programming / Mark Summerfield.
+
 Cu_u3.eam and ex02.input are provided by my teacher.
