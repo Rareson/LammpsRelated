@@ -1,0 +1,21 @@
+http://lammps.sandia.gov/bug.html
+
+
+
+13 May 2014
+
+This is a maintenance patch to make some low-level changes in preparation for releasing some new load-balancing options as part of the balance and fix balance commands. These changes are to underlying data structures to allow for more irregular partitioning of the simulation box.
+
+The following commands are affected:
+
+    communicate - deleted
+    comm_style - new
+    comm_modify - new
+    balance - syntax changed
+    fix balance - syntax changed
+
+Note that the old communicate command has been replaced by the comm_style and comm_modify commands, which are more compatible with how other LAMMPS commands and options are structured.
+
+BACKWARD COMPATIBILITY: The communicate command has been removed, and replaced by the comm_style and comm_modify commands. The syntax for the balance and fix balance commands has changed.
+
+This patch file can be applied to the 11 May 2014 version. This is the list of changed files.

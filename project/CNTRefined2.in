@@ -1,0 +1,66 @@
+# Input file for uniaxial compressive loading of single crystal aluminum
+# Mark Tschopp, November 2010
+
+# ------------------------ INITIALIZATION ----------------------------
+units 		metal
+dimension	3
+boundary	p	p	p
+atom_style	full
+
+# ----------------------- ATOM DEFINITION ----------------------------
+read_data	CNT012.data
+
+# ------------------------ FORCE FIELDS ------------------------------
+pair_style	tersoff
+pair_coeff	* * SiC.tersoff C
+
+# ------------------------- SETTINGS ---------------------------------
+compute csym all centro/atom fcc
+compute peratom all pe/atom
+variable assignedTemp equal 0.01
+variable dragValue equal 0.5
+
+######################################
+# EQUILIBRATION
+reset_timestep	0
+timestep 0.001
+velocity all create ${assignedTemp} 12345 mom yes rot no
+
+# Store final cell length for strain calculations
+variable tmp equal "lz"
+variable L0 equal ${tmp}
+print "Initial Length, L0: ${L0}"
+
+######################################
+# DEFORMATION
+reset_timestep	0
+
+fix		1 all npt temp ${assignedTemp} ${assignedTemp} 1 y 0 0 1 x 0 0 1 drag ${dragValue}
+variable srate equal 1.0e10
+variable srate1 equal "-v_srate / 1.0e12"
+fix		2 all deform 1 z erate ${srate1} units box remap x
+
+# Output strain and stress info to file
+# for units metal, pressure is in [bars] = 100 [kPa] = 1/10000 [GPa]
+# p2, p3, p4 are in GPa
+variable strain equal "(lz - v_L0)/v_L0"
+variable p1 equal "v_strain"
+variable p2 equal "-pxx/10000"
+variable p3 equal "-pyy/10000"
+variable p4 equal "-pzz/10000"
+variable tempRecord equal "temp"
+fix def1 all print 100 "${p1} ${p2} ${p3} ${p4} ${tempRecord} ${assignedTemp}" file Al_comp_100.def1.txt screen no
+
+# Use cfg for AtomEye
+dump 		1 all cfg 250 ./dump/dump.comp_*.cfg mass type xs ys zs c_csym c_peratom fx fy fz
+dump_modify     1 element C
+
+# Display thermo
+thermo 	1000
+thermo_style	custom step v_strain temp v_p2 v_p3 v_p4 ke pe press
+
+run		20000
+
+######################################
+# SIMULATION DONE
+print "All done"

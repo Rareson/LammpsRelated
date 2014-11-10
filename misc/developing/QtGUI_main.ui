@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>770</width>
+    <height>604</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Lammps Unofficial GUI</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="Demo">
+       <attribute name="title">
+        <string>Demo</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="0" colspan="2">
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>Script  Preview</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QTextBrowser" name="textBrowser"/>
+          </item>
+         </layout>
+        </item>
+        <item row="1" column="0" colspan="2">
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>Notes</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QTextBrowser" name="textBrowser_2"/>
+          </item>
+         </layout>
+        </item>
+        <item row="2" column="0">
+         <widget class="QComboBox" name="comboBox">
+          <item>
+           <property name="text">
+            <string>Lattice Constant</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Elastic</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QPushButton" name="pushButton">
+          <property name="text">
+           <string>Run</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_6">
+       <attribute name="title">
+        <string>Experiment</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_8">
+        <item>
+         <widget class="QSplitter" name="splitter">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <widget class="QWidget" name="layoutWidget">
+           <layout class="QVBoxLayout" name="verticalLayout_3">
+            <item>
+             <widget class="QLabel" name="label_TargetScript">
+              <property name="text">
+               <string>Target Script</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_TargetScript"/>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QPushButton" name="pushButton_TargetScript">
+           <property name="text">
+            <string>Browse</string>
+           </property>
+          </widget>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSplitter" name="splitter_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <widget class="QWidget" name="layoutWidget">
+           <layout class="QVBoxLayout" name="verticalLayout_4">
+            <item>
+             <widget class="QLabel" name="label_LammpsPath">
+              <property name="text">
+               <string>Lammps Path</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_LammpsPath"/>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QPushButton" name="pushButton_LammpsPath">
+           <property name="text">
+            <string>Browse</string>
+           </property>
+          </widget>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSplitter" name="splitter_3">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <widget class="QWidget" name="layoutWidget_4">
+           <layout class="QVBoxLayout" name="verticalLayout_7">
+            <item>
+             <widget class="QLabel" name="label_DumpName">
+              <property name="toolTip">
+               <string/>
+              </property>
+              <property name="text">
+               <string>Dump Name - Specify the first dump file used in your output file</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_DumpName"/>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QPushButton" name="pushButton_DumpName">
+           <property name="text">
+            <string>Browse</string>
+           </property>
+          </widget>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSplitter" name="splitter_4">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <widget class="QWidget" name="layoutWidget_3">
+           <layout class="QVBoxLayout" name="verticalLayout_6">
+            <item>
+             <widget class="QLabel" name="label_AtomEyePath">
+              <property name="text">
+               <string>AtomEye Path</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_AtomEyePath"/>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QPushButton" name="pushButton_AtomEyePath">
+           <property name="text">
+            <string>Browse</string>
+           </property>
+          </widget>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSplitter" name="splitter_5">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <widget class="QPushButton" name="pushButton_RunExperiment">
+           <property name="text">
+            <string>Run</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_VisualizeExperiment">
+           <property name="text">
+            <string>Visualize</string>
+           </property>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Homework</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>Project</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_4">
+       <attribute name="title">
+        <string>Compile</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="0">
+         <widget class="QTextBrowser" name="textBrowser_3"/>
+        </item>
+        <item row="0" column="1">
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QLabel" name="label_3">
+            <property name="text">
+             <string>Minimum</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_2">
+            <property name="text">
+             <string>Compile</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_5">
+       <attribute name="title">
+        <string>Preferences</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_3">
+       <attribute name="title">
+        <string>About</string>
+       </attribute>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>770</width>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>comboBox</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>textBrowser</receiver>
+   <slot>reload()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>57</x>
+     <y>535</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>119</x>
+     <y>103</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboBox</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>textBrowser_2</receiver>
+   <slot>reload()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>57</x>
+     <y>535</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>120</x>
+     <y>358</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>statusbar</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>425</x>
+     <y>535</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>671</x>
+     <y>584</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>textBrowser_3</receiver>
+   <slot>reload()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>748</x>
+     <y>330</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>57</x>
+     <y>85</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_TargetScript</sender>
+   <signal>clicked()</signal>
+   <receiver>lineEdit_TargetScript</receiver>
+   <slot>update()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>551</x>
+     <y>114</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>407</x>
+     <y>146</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_LammpsPath</sender>
+   <signal>clicked()</signal>
+   <receiver>lineEdit_LammpsPath</receiver>
+   <slot>update()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>531</x>
+     <y>209</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>389</x>
+     <y>244</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_DumpName</sender>
+   <signal>clicked()</signal>
+   <receiver>lineEdit_DumpName</receiver>
+   <slot>update()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>683</x>
+     <y>338</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>483</x>
+     <y>343</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_AtomEyePath</sender>
+   <signal>clicked()</signal>
+   <receiver>lineEdit_AtomEyePath</receiver>
+   <slot>update()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>589</x>
+     <y>404</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>373</x>
+     <y>452</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEdit_TargetScript</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>TargetScript(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>233</x>
+     <y>146</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>613</x>
+     <y>30</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEdit_LammpsPath</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>TargetScript(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>276</x>
+     <y>262</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>91</x>
+     <y>575</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEdit_DumpName</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>TargetScript(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>188</x>
+     <y>343</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>309</x>
+     <y>575</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEdit_AtomEyePath</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>TargetScript(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>309</x>
+     <y>449</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>458</x>
+     <y>577</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_RunExperiment</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>update()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>328</x>
+     <y>520</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>620</x>
+     <y>575</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_VisualizeExperiment</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>update()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>646</x>
+     <y>522</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>688</x>
+     <y>580</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>TargetScript(QString)</slot>
+  <slot>RunExperiment(QString,QString)</slot>
+ </slots>
+</ui>

@@ -1,0 +1,89 @@
+label		begin
+variable	n loop 4
+
+units 		real
+dimension	3
+boundary	s	s	p
+atom_style	full
+
+variable assignedTemp equal 300*${n} # 300, 600, 900, 1200, 1500, 1800, 2100, 2400
+variable waterNumber equal 30
+variable dragValue equal 0.2
+variable srate equal -1.0e10
+variable srate1 equal "-v_srate / 1.0e12"
+if "${srate1} > 0" then &
+    "variable forceType string T" &
+else &
+    "variable forceType string C"
+
+
+
+read_data       SWNTH2O${waterNumber}.processed
+
+pair_style	reax 6.0 1 1 1.0e-6
+pair_coeff	* * ffield.reax 1 2 3
+
+compute csym all centro/atom fcc
+compute peratom all pe/atom
+
+
+timestep 0.001
+
+reset_timestep	0
+velocity all create ${assignedTemp} 12345 mom yes rot no
+
+fix		1 all nvt temp ${assignedTemp} ${assignedTemp} 0.001 drag ${dragValue}
+fix		2 all deform 1 z erate ${srate1} units box
+
+
+variable tmp equal "lz"
+variable L0 equal ${tmp}
+
+variable strain equal "(lz - v_L0)/v_L0" # lz is the length along z axis.
+variable p1 equal "v_strain"
+variable p2 equal "-pxx/10000"
+variable p3 equal "-pyy/10000"
+variable p4 equal "-pzz/10000"
+
+variable tempRecord equal "temp"
+
+# =====================================================
+# print and dump atom positions for visualization, e.g. using atomeye
+# =====================================================
+# Stress- strain faw data
+shell       mkdir raw
+#variable tmp equal "pzz"
+#variable pzz0 equal ${tmp}
+#variable p4 equal "-(pzz-pzz0)/10000"
+fix def1 all print 100 "${p1} ${p2} ${p3} ${p4} ${tempRecord} ${assignedTemp}" file ./raw/cnt${forceType}Temp${assignedTemp}H2O${waterNumber}.def1.txt screen no
+
+
+# Use cfg for AtomEye
+#shell       mkdir dump
+#shell       mkdir ./dump/dump_${assignedTemp}_${waterNumber}_${forceType}
+#dump 		1 all cfg 100 ./dump/dump_${assignedTemp}_${waterNumber}_${forceType}/dump_${assignedTemp}_${waterNumber}_${forceType}_*_.cfg &
+#mass type xsu ysu zsu
+#dump_modify     1 element C H O
+
+# Use xyz for VMD
+#shell       mkdir dumpXYZ
+#dump            dumpwall all xyz 100 ./dumpXYZ/dump.all.${assignedTemp}_${waterNumber}_${forceType}.xyz
+#dump_modify     dumpwall flush yes
+
+# Display thermo
+thermo 	100
+thermo_style	custom step v_strain temp v_p2 v_p3 v_p4 ke pe press
+
+run		50000
+
+######################################
+# SIMULATION DONE
+shell       mv log.lammps log.Temp_${assignedTemp}_H2O_${waterNumber}_${forceType}
+shell       mkdir log
+shell       cp log.Temp_${assignedTemp}_H2O_${waterNumber}_${forceType} ./log
+shell       rm log.Temp_${assignedTemp}_H2O_${waterNumber}_${forceType}
+print "All done"
+
+clear
+next		n
+jump		CNTNoModel.v1.in begin

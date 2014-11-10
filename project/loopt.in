@@ -1,0 +1,11 @@
+label		begin
+variable	n loop 10
+label       innerBegin
+variable	nn loop 10
+print       "All done ${n} ${nn}"
+
+next        nn
+jump		loopt.in innerBegin
+
+next		n
+jump		loopt.in begin

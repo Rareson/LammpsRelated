@@ -1,0 +1,34 @@
+variable        gamma equal 0.1  # eta ~ 0.3 mPa s, timestep = 2 fs
+pair_style      hybrid/overlay lj/cut/coul/long 14.0 10.0 dpd/tstat 300.0 300.0 10.0 38262
+pair_coeff      * * lj/cut/coul/long 0.086 3.4
+pair_coeff      2 * lj/cut/coul/long 0.0 0.0
+# pair_coeff      1 * lj/cut/coul/long 0.0 0.0 # H to all
+pair_coeff      1 3 lj/cut/coul/long 0.02330 3.275
+
+# pair_coeff      5 8 lj/cut/coul/long 0.02330 3.275 # C to O
+# pair_coeff      6*7 8 lj/cut/coul/long 0.1144 3.275 # C to O
+
+pair_coeff      3 3 lj/cut/coul/long 0.1521 3.151
+# pair_coeff      8 8 lj/cut/coul/long 0.1521 3.151 # O to O
+
+
+pair_coeff      2 2 dpd/tstat ${gamma}
+pair_coeff      2 3 dpd/tstat ${gamma}
+pair_coeff      3 3 dpd/tstat ${gamma}
+
+# pair_coeff      1 1 dpd/tstat ${gamma} # H to H
+# pair_coeff      1 8 dpd/tstat ${gamma} # H to O
+# pair_coeff      8 8 dpd/tstat ${gamma} # O to O
+
+#pair_style	reax
+#pair_coeff	* * ffield.reax.mattsson 1 2 3#C H O
+
+############ successfully read.
+pair_style	reax
+pair_coeff	* * ffield.reax 1 2 3 # segmentation error
+
+pair_style	reax
+pair_coeff	* * ffield.reax.CHO_2008 1 2 3
+
+pair_style	reax/c lmp_control
+pair_coeff	* * ffield.reax.cho H C O

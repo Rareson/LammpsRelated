@@ -1,0 +1,229 @@
+# Input file for uniaxial compressive loading of single crystal aluminum
+# Mark Tschopp, November 2010
+# Sample script in the PPT re-created by Domicor (g1114128525@gmail.com), Nov. 14, 2014
+
+# ./lmp_serial_mine < CNTRefined.in
+# ./atomeye52 ./dump/dump.comp_0.cfg
+
+# Questions:
+# Q1: boundary? ssp? sss?
+# F(final).A1: With ppp, the outer box becomes smaller.
+# pps?
+# ERROR: Cannot use fix deform on a shrink-wrapped boundary
+# (../fix_deform.cpp:236)
+# s is shrink wrapped, which stands for free surface.
+# should use ssp
+# ref:
+# http://www.rthpc.com/plus/view.php?aid=295
+
+
+# Q2: pair_coeff?
+# A2: different potential data will generate different results.
+
+
+# Q3: nvt or npt?
+# F.A3: The thermostat is applied to only the
+# translational degrees of freedom for the particles.
+# ERROR: Pressure control must be used with fix npt (../fix_npt.cpp:30)
+# npt would require all the dimensions to be periodic.
+# Then npt is not feasible. Since if the tube bends and then the atoms go
+# other way around, those atoms would affect atoms in the other side, which
+# is absolutely impossible in reality.
+# So, nvt.
+
+
+# Q4: srate and strain? relationship between them?
+# F.A4: L(t) = L0 (1 + erate*dt)
+# ref: http://lammps.sandia.gov/doc/fix_deform.html
+
+
+# Q5: deform, one sided? control the upper and lower?
+# A5: fix deform performs deformtion along the non-shrink-wrapped axis.
+# dynamic? equi?
+# Every Nth timestep during the run, the simulation box is expanded,
+# contracted, or tilted to ramped values between the initial and final values.
+
+# Q6: bond data needed?
+# F.A6: if the bond data is provided, even with ssp boundaries, it won't fold.
+
+
+# Q7: what about the script that is used for calculating Young's modulus?
+# F.A7: refer to Q12.
+
+# Q8: xs or xsu?
+# F.A8: xs, the box is exactly the length of the tube, and we see that the
+# p boundary influence just the upper and lower because x, y are far from
+# reaching the edge of the box. However, with p, the atom will move from
+# bottom to top, which is odd and not realistic.
+# The ppp with xsu: at first frame, the box is quite large (10 times maybe),
+# however when simulation starts, it suddenly shrink to the size in xs, which
+# may be caused by ppp. The atoms still travels. the u in xsu can't compromise
+# the effect of periodic boundary.
+# if produce xs and xsu simultaneously, the xsu also becomes xs.
+# |||This is a bug.|||
+
+# Q9: why is there fluctuation in the final strain-stress curve?
+# the temperature is not fixed, it fluctuates. actually in this script isn't
+# it not relaxed every time after deformation? Should I investigate the
+# equilibrium state or non-equilibirium one?
+# the outer box shrinks along z axis and expands in x, y directions.
+# and there are some fluctuations too. I think this doesn't matter because
+# xsu is 10 times the size of the inner, when x,y stretches out, the size of
+# the box should change too.
+# This fix (fix deform) can be used to perform non-equilibrium MD (NEMD)
+# simulations of a continuously strained system. See the fix nvt/sllod and
+# compute temp/deform commands for more details.
+
+# Q10: specify the atom types?
+# F.A10: element args = E1 E2 ... EN, where N = # of atom types
+#    E1,...,EN = element name, e.g. C or Fe or Ga
+
+# Q11:This sample script may be used to analyse non-equilibirium MD. Refer
+# to the paper.
+# F.A11: When non-equilibrium MD (NEMD) simulations are performed
+# using this fix (fix deform), the option "remap v" should normally be used.
+# So, the original one is studying the NEMD.
+# Need to add relaxation process.
+
+# Q12: What about the methods learnt in the course, elastic constant?
+# A12: It's a bulk of atoms. And "minimize" command is used, which will
+# results in the collapse of CNT if applied in this system.
+# So the alternative is "run"?
+# fix, unfix, run.
+# strain rate, it's about xx/time. The drag is about relaxation.
+# When using strain rate, it's about dynamic?
+
+# Q13: About fix npt drag?
+# F.A13: n some cases (e.g. for solids) the pressure (volume) and/or
+# temperature of the system can oscillate undesirably when a Nose/Hoover
+# barostat and thermostat is applied. The optional drag keyword will damp
+# these oscillations, although it alters the Nose/Hoover equations.
+# A value of 0.0 (no drag) leaves the Nose/Hoover formalism unchanged.
+# A non-zero value adds a drag term; the larger the value specified,
+# the greater the damping effect. Performing a short run and monitoring
+# the pressure and temperature is the best way to determine if the drag term
+# is working. Typically a value between 0.2 to 2.0 is sufficient to damp
+# oscillations after a few periods. Note that use of the drag keyword will
+# interfere with energy conservation and will also change the distribution
+# of positions and velocities so that they do not correspond to the
+# nominal NVT, NPT, or NPH ensembles.
+
+# Q14: velocity initialized?
+# A14: without initial velocity, the temp seems to be destined to fluctuate.
+# Use velocity.
+# The create style generates an ensemble of velocities using a random
+# number generator with the specified seed as the specified temperature.
+# velocity ID temp randomSeed, and
+# The mom and rot options are used by create.
+# If mom = yes, the linear momentum of the newly created ensemble of
+# velocities is zeroed; if rot = yes, the angular momentum is zeroed
+
+# Q15: maybe the z axis should use zs?
+# F.A15: ERROR: Dump cfg arguments can not mix
+# xs|ys|zs with xsu|ysu|zsu (../dump_cfg.cpp:63)
+
+# Q16: Fine-tune the drag coefficient.
+# A16: drag 0.3 seems great....not really, the graph shows it.
+#
+
+# Q17: The script provided by the senior schoolmate is not right.
+# A17: Maybe they didn't consider the control of temperature.
+# fix nvt it alone couldn't stabilize the temperature of the system.
+# I think this is why their work couldn't reflect the truth.
+
+# Q18: strain-stress curve not starting from 0.
+# F.A18: Should control the p in the z axis.
+# ERROR: Pressure control can not be used with fix nvt (../fix_nvt.cpp:31).
+# So the pzz starts from non-zero?
+# refer to the original paper.
+# It can be seen that the starting point is (0.01,y), of course it
+# won't start from 0.
+
+# Q19: make the middle the group of atoms that can move.
+# A19: This should be more like it.
+
+# ------------------------ INITIALIZATION ----------------------------
+units 		metal
+dimension	3
+boundary	s	s	p
+atom_style	full
+
+# ----------------------- ATOM DEFINITION ----------------------------
+read_data	CNT012.data
+
+# ------------------------ FORCE FIELDS ------------------------------
+pair_style	tersoff
+pair_coeff	* * SiC.tersoff C
+
+
+# ------------------------- SETTINGS ---------------------------------
+compute csym all centro/atom fcc
+compute peratom all pe/atom
+variable assignedTemp equal 0.01
+variable dragValue equal 0.2
+
+######################################
+# EQUILIBRATION # Not needed
+reset_timestep	0
+timestep 0.001
+#velocity all create 300 12345 mom yes rot no
+#fix 1 all npt temp 300 300 1 iso 0 0 1 drag 1
+
+# Set thermo output
+#thermo 1000
+#thermo_style custom step lx ly lz press pxx pyy pzz pe temp
+
+# Run for at least 10 picosecond (assuming 1 fs timestep)
+#run 20000
+#unfix 1
+
+# Store final cell length for strain calculations
+variable tmp equal "lz"
+variable L0 equal ${tmp}
+print "Initial Length, L0: ${L0}"
+
+######################################
+# DEFORMATION
+reset_timestep	0
+
+velocity all create ${assignedTemp} 12345 mom yes rot no
+
+# fix		1 all npt temp 300 300 1 y 0 0 1 z 0 0 1 drag 1
+fix		1 all nvt temp ${assignedTemp} ${assignedTemp} 0.001 drag ${dragValue}#y 0 0 1 x 0 0 1 drag 1
+# fix		1 all npt temp 300 300 1 y 0 0 1 x 0 0 1 drag 1
+
+
+
+# variable srate equal 1.0e10
+# negative for tensile, positive for compression.
+variable srate equal 1.0e10
+variable srate1 equal "-v_srate / 1.0e12"
+# fix		2 all deform 1 x erate ${srate1} units box remap x
+# erate: engineering strain rate (1/time units)
+fix		2 all deform 1 z erate ${srate1} units box #remap x
+# fix		2 all defrom 1 z final 0 5.0 z final 0.0 5.0 units box
+
+# Output strain and stress info to file
+# for units metal, pressure is in [bars] = 100 [kPa] = 1/10000 [GPa]
+# p2, p3, p4 are in GPa
+variable strain equal "(lz - v_L0)/v_L0" # lz is the length along z axis.
+variable p1 equal "v_strain"
+variable p2 equal "-pxx/10000"
+variable p3 equal "-pyy/10000"
+variable p4 equal "-pzz/10000"
+variable tempRecord equal "temp"
+fix def1 all print 100 "${p1} ${p2} ${p3} ${p4} ${tempRecord} ${assignedTemp}" file Al_comp_100.def1.txt screen no
+
+# Use cfg for AtomEye
+dump 		1 all cfg 250 ./dump/dump.comp_*.cfg mass type xsu ysu zsu c_csym c_peratom fx fy fz
+dump_modify     1 element C
+
+# Display thermo
+thermo 	1000
+thermo_style	custom step v_strain temp v_p2 v_p3 v_p4 ke pe press
+
+run		20000
+
+######################################
+# SIMULATION DONE
+print "All done"
